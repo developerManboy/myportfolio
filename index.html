@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Timothy Kandiero · System, Web & Network Engineer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #F8FAFE;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #1A2C33;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --dark-slate: #0F2A2F;
+      --deep-teal: #1C4E5C;
+      --gold-accent: #C9A96E;
+      --gold-light: #EADDB5;
+      --gray-mist: #E9EDF2;
+      --text-dark: #18323B;
+      --text-soft: #2E5464;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0 24px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid var(--gold-light);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--dark-slate), var(--deep-teal));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo span {
+      color: var(--gold-accent);
+      background: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-accent); }
+
+    /* hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      padding: 60px 0 40px;
+    }
+    .hero-content { flex: 1.2; }
+    .hero-badge {
+      background: var(--gold-light);
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--deep-teal);
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      color: var(--dark-slate);
+    }
+    .hero-highlight {
+      border-bottom: 4px solid var(--gold-accent);
+      display: inline-block;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-soft);
+      max-width: 580px;
+      margin-bottom: 32px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--deep-teal);
+      color: white;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 48px;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.25s;
+    }
+    .btn-primary:hover {
+      background: var(--dark-slate);
+      transform: translateY(-3px);
+    }
+    .btn-outline {
+      border: 1.5px solid var(--deep-teal);
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 48px;
+      text-decoration: none;
+      color: var(--deep-teal);
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-accent);
+    }
+
+    .btn-demo {
+      background: transparent;
+      border: 1.5px solid var(--gold-accent);
+      padding: 8px 22px;
+      font-weight: 600;
+      border-radius: 40px;
+      text-decoration: none;
+      color: var(--gold-accent);
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+    .btn-demo:hover {
+      background: var(--gold-accent);
+      color: var(--dark-slate);
+      transform: translateY(-2px);
+    }
+    .hero-visual {
+      flex: 0.9;
+      background: white;
+      border-radius: 38px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.05);
+    }
+    .code-icon { font-size: 7rem; color: var(--gold-accent); }
+
+
+    section { padding: 70px 0 60px; }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--dark-slate);
+      display: inline-block;
+      margin-bottom: 48px;
+      position: relative;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 56px;
+      height: 3px;
+      background: var(--gold-accent);
+    }
+
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .expertise-card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 24px;
+      border: 1px solid var(--gray-mist);
+      transition: 0.2s;
+      box-shadow: 0 6px 12px -8px rgba(0,0,0,0.05);
+    }
+    .expertise-card i {
+      font-size: 2.2rem;
+      color: var(--gold-accent);
+      margin-bottom: 16px;
+    }
+    .expertise-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--deep-teal);
+    }
+    .expertise-card p {
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 52px;
+      margin-top: 20px;
+    }
+    .project-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: 0.25s ease;
+      box-shadow: 0 12px 24px -14px rgba(0, 0, 0, 0.06);
+      border: 1px solid #EFF3F8;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 35px -16px rgba(28,78,92,0.2);
+    }
+
+    .screenshot-gallery {
+      display: flex;
+      gap: 8px;
+      padding: 16px 16px 0 16px;
+      background: #F5F9FE;
+    }
+    .screenshot-gallery img {
+      width: calc(33.33% - 5px);
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid #E0E9F0;
+      background: #EFF3F8;
+    }
+    .project-info {
+      padding: 22px 24px 30px;
+    }
+    .project-info h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--deep-teal);
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 14px;
+    }
+    .tech-badge {
+      background: #EEF4F8;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--deep-teal);
+    }
+    .project-info p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .feature-list {
+      list-style: none;
+      margin: 14px 0 8px;
+    }
+    .feature-list li {
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .feature-list li i {
+      color: var(--gold-accent);
+      width: 18px;
+      font-size: 0.8rem;
+    }
+
+    .demo-btn-wrapper {
+      margin-top: 18px;
+    }
+
+
+    .skills-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: white;
+      border-radius: 48px;
+      padding: 32px 40px;
+      border: 1px solid var(--gray-mist);
+    }
+    .skill-pill {
+      background: #F3F7FA;
+      padding: 8px 22px;
+      border-radius: 40px;
+      font-weight: 500;
+    }
+
+    /* contact section */
+    .contact-section {
+      background: white;
+      border-radius: 48px;
+      padding: 48px 40px;
+      text-align: center;
+      border: 1px solid #E6EDF2;
+    }
+    .contact-flex {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 36px;
+      margin: 32px 0 28px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+    }
+    .contact-item i { font-size: 1.4rem; color: var(--gold-accent); width: 28px; }
+    .social-links-large {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin: 36px 0 20px;
+    }
+    .social-links-large a {
+      font-size: 1.7rem;
+      color: var(--deep-teal);
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .social-links-large a:hover { color: var(--gold-accent); transform: translateY(-3px); }
+    footer {
+      text-align: center;
+      padding: 40px 0 48px;
+      border-top: 1px solid #E2E9EF;
+      color: #6F8F9F;
+    }
+    @media (max-width: 880px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        max-width: 550px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    @media (max-width: 780px) {
+      .container { padding: 0 24px; }
+      .hero-content h1 { font-size: 2.3rem; }
+      .navbar { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="navbar">
+    <div class="logo">Timothy <span>Kandiero</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-code"></i> <i class="fas fa-network-wired"></i> System, Web & Network Engineer</div>
+      <h1>Timothy Kandiero · <span class="hero-highlight">Building systems</span>, Web Apps & Networks</h1>
+      <p class="hero-desc">I develop unique web applications, business systems, and also design reliable network infrastructures, from Starlink installations to full office setups.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn-primary"><i class="fas fa-arrow-down"></i> Explore work</a>
+        <a href="#contact" class="btn-outline"><i class="fas fa-comment"></i> Contact me</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <i class="fas fa-laptop-code code-icon"></i>
+      <p style="margin-top: 12px; font-weight: 500;"><i class="fas fa-server"></i> Web Dev · HRMS · Real-time</p>
+      <div style="margin-top: 8px;"><i class="fas fa-satellite-dish"></i> Starlink · Network installation</div>
+    </div>
+  </div>
+
+  <section id="expertise">
+    <div class="section-title">what I do</div>
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <i class="fas fa-globe"></i>
+        <h3>Web & System Development</h3>
+        <p>Full-stack web apps, HR management systems, real-time dashboards, and data-driven platforms. Node.js, React, REST APIs, offline-first architecture.</p>
+      </div>
+      <div class="expertise-card">
+        <i class="fas fa-network-wired"></i>
+        <h3>Network Engineering & Office Setup</h3>
+        <p>Complete network installation and configuration — including <strong>Starlink satellite internet setup</strong>, LAN/Wi-Fi deployments, office cabling, router configuration, and network security. I ensure reliable connectivity for businesses and remote sites.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-title">featured projects</div>
+    <div class="projects-grid">
+      
+      <div class="project-card">
+        <div class="screenshot-gallery">
+          <img src="hrms (2).png" alt="HRMS dashboard">
+          <img src="hrms (3).png" alt="Attendance management">
+          <img src="hrms (1).png" alt="Employees Management">
+        </div>
+        <div class="project-info">
+          <h3>HR Management System</h3>
+          <div class="tech-stack">
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Express</span>
+            <span class="tech-badge">JSON DB</span>
+            <span class="tech-badge">Offline-first</span>
+          </div>
+          <p>Complete employee management, attendance tracking, Excel reporting, and secure authentication. Works online/offline for real business operations.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-user-check"></i> Employee records & role management</li>
+            <li><i class="fas fa-calendar-check"></i> Clock-in/out & attendance logs</li>
+            <li><i class="fas fa-file-excel"></i> One-click Excel payroll reports</li>
+            <li><i class="fas fa-lock"></i> JWT authentication & access control</li>
+          </ul>
+          <div class="demo-btn-wrapper">
+            <a href="https://human-resources-management-system-o3po.onrender.com" class="btn-demo" id="hrmsDemoBtn">
+              <i class="fas fa-external-link-alt"></i> Check out demo
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="screenshot-gallery">
+          <img src="volleyballapp (1).jpg" alt="Volleyball scoreboard live">
+          <img src="volleyballapp (2).jpg" alt="Match summary and charts">
+          <img src="volleyballapp (3).jpg" alt="Player stats dashboard">
+        </div>
+        <div class="project-info">
+          <h3>Volleyball App</h3>
+          <div class="tech-stack">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Chart.js</span>
+          </div>
+          <p>Real-time volleyball match platform with live score tracking, interactive scoreboard, and detailed player analytics.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-futbol"></i> Live scoreboard & point-by-point updates</li>
+            <li><i class="fas fa-chart-simple"></i> Player statistics (kills, blocks, assists)</li>
+            <li><i class="fas fa-history"></i> Match history & player rankings</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-title">Tech & Tools</div>
+    <div class="skills-mini">
+      <span class="skill-pill"><i class="fab fa-node-js"></i> Node.js</span>
+      <span class="skill-pill"><i class="fas fa-database"></i> Express.js</span>
+      <span class="skill-pill"><i class="fab fa-react"></i> React</span>
+      <span class="skill-pill"><i class="fab fa-js"></i> JavaScript</span>
+      <span class="skill-pill"><i class="fas fa-satellite-dish"></i> Starlink Installation</span>
+      <span class="skill-pill"><i class="fas fa-wifi"></i> LAN/Wi-Fi Setup</span>
+      <span class="skill-pill"><i class="fas fa-network-wired"></i> Office Cabling</span>
+      <span class="skill-pill"><i class="fas fa-shield-alt"></i> Network Security</span>
+      <span class="skill-pill"><i class="fas fa-router"></i> MikroTik / Ubiquiti</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-section">
+      <div class="section-title" style="margin-bottom: 16px;">contact me</div>
+      <div class="contact-flex">
+        <div class="contact-item"><i class="fas fa-envelope"></i> kandierotimothy@gmail.com</div>
+        <a href="https://wa.me/qr/DMHXNKAMLQXCG1" target="_blank" title="WhatsApp" style="text-decoration: none;"><div class="contact-item"><i class="fab fa-whatsapp"></i> +265 884 628 609</div></a> 
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Lilongwe, Malawi</div>
+      </div>
+
+      <div class="social-links-large">
+        <a href="https://www.facebook.com/share/1H33Yge7SJ/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/manboy_kulture?igsh=MXd0YTY2eXUxb2cwbw==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/Ayggat553" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/Ayggat" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://youtube.com/@ayggat?si=QStcgXpec0ERIZ-N" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/qr/DMHXNKAMLQXCG1" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Timothy Kandiero — System, Web & Network Engineer. Reliable software & connectivity solutions.</p>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === "#" || targetId === "") return;
+       
+        if (this.id === 'hrmsDemoBtn' && targetId === '#') {
+      
+          return;
+        }
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+    }
+  })();
+</script>
+</body>
+</html>
